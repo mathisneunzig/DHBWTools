@@ -4,8 +4,9 @@ import { getTenantByHost, type TenantCfg } from '@/tenants/config';
 
 export async function resolveTenantFromHeaders(): Promise<TenantCfg | null> {
   const h = await headers();
-  const host = h.get('host') || undefined;
-  return getTenantByHost(host);
+  const xfHost = h.get('x-forwarded-host') || undefined;
+  const host   = h.get('host') || undefined;
+  return getTenantByHost(xfHost ?? host);
 }
 
 export async function getTenantOrThrow(): Promise<TenantCfg> {

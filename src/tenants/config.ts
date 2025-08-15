@@ -36,6 +36,13 @@ export const TENANTS: TenantCfg[] = [
 
 export function getTenantByHost(host?: string): TenantCfg | null {
   if (!host) return null;
-  const h = host.toLowerCase();
-  return TENANTS.find(t => t.domains.some(d => d.toLowerCase() === h)) ?? null;
+  const h = host.toLowerCase().split(':')[0];
+  let left = h.split('.')[0] || '';
+  const candidates: TenantId[] = ['db', 'se2', 'se2-ka', "fs"];
+  for (const id of candidates) {
+    if (left === id || left.startsWith(id + '-')) {
+      return TENANTS[id];
+    }
+  }
+  return TENANTS["db"];
 }
