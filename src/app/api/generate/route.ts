@@ -28,9 +28,6 @@ async function getAppendix(dataDir: string) {
     if (await fileExists(filepath)) {
       const a = await fs.readFile(filepath, 'utf8');
       string += `## ${e} \n\n ${a} \n\n`;
-      // if (i < appendix.length - 1) {
-      //   string += '<div style="page-break-after: always;"></div> \n\n';
-      // }
     } else {
       console.error('❌ File does not exist:', filepath);
     }
@@ -86,9 +83,8 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
     const data = await req.json();
     const { topics, difficulties, points: totalPoints } = data;
 
-    // tenant-spezifisch laden
     const all = await loadExercises(dataDir);
-    const exercises = all.filter(
+    const pool = all.filter(
       (e) => topics.includes(e.topic) && difficulties.includes(e.difficulty)
     );
 
@@ -98,35 +94,61 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
     const resultrow = await fs.readFile(path.join(dataDir, 'resultrow.md'), 'utf8');
     const css = await fs.readFile(path.join(process.cwd(), 'src/styles/pdf-style.css'), 'utf8');
 
-    const byDifficulty: Record<number, Exercise[]> = {};
-    difficulties.forEach((d: number) => (byDifficulty[d] = []));
-    for (const ex of exercises) {
-      if (byDifficulty[ex.difficulty]) byDifficulty[ex.difficulty].push(ex);
-    }
+    const byTopic: Record<string, Exercise[]> = {};
+    for (const t of topics) byTopic[t] = [];
+    for (const ex of pool) byTopic[ex.topic]?.push(ex);
+    for (const t of topics) byTopic[t] = shuffle(byTopic[t]);
 
+    const order = shuffle([...topics]);
+    const indices: Record<string, number> = Object.fromEntries(order.map(t => [t, 0]));
     const selected: Exercise[] = [];
-    for (const diff of difficulties) {
-      const list = shuffle(byDifficulty[diff]);
-      if (list.length) selected.push(list[0]);
+    let sumPoints = 0;
+
+    let active = order.filter(t => byTopic[t].length > 0).length;
+    const maxLoops = 10000;
+    let loops = 0;
+
+    while (sumPoints < totalPoints && active > 0 && loops < maxLoops) {
+      for (const t of order) {
+        if (sumPoints >= totalPoints) break;
+        const list = byTopic[t];
+        let i = indices[t] ?? 0;
+        if (!list || i >= list.length) continue;
+
+        let picked: Exercise | null = null;
+        while (i < list.length) {
+          const cand = list[i];
+          if (sumPoints + cand.points <= totalPoints && !selected.includes(cand)) {
+            picked = cand;
+            i += 1;
+            break;
+          }
+          i += 1;
+        }
+        indices[t] = i;
+
+        if (picked) {
+          selected.push(picked);
+          sumPoints += picked.points;
+        }
+
+        if (i >= list.length) {
+          active = order.filter(x => indices[x] < byTopic[x].length).length;
+        }
+      }
+      loops += 1;
+      if (order.every(t => indices[t] >= (byTopic[t]?.length ?? 0))) break;
     }
 
-    let sumPoints = selected.reduce((sum, ex) => sum + ex.points, 0);
-    const rest: Exercise[] = shuffle(exercises.filter((ex) => !selected.includes(ex)));
-    for (const ex of rest) {
-      if (sumPoints + ex.points > totalPoints) continue;
-      selected.push(ex);
-      sumPoints += ex.points;
-      if (sumPoints >= totalPoints) break;
-    }
-
-    const exerciseMarkdowns = await getExercises(selected, dataDir);
+    const shuffledSelected = shuffle([...selected]);
+    const exerciseMarkdowns = await getExercises(shuffledSelected, dataDir);
     const { marked } = await import('marked');
     const exerciseHtmlBlocks = exerciseMarkdowns
       .map((md) => `<div class="exercise">${marked(md)}</div>`)
       .join('\n');
 
     const headerMD = header.replace('{points}', '' + maxPoints) + '\n\n';
-    const footerMD = result + '\n' + getResult(selected, resultrow, maxPoints) + '\n\n' + footer + '\n\n';
+    const footerMD = result + '\n' + getResult(shuffledSelected, resultrow, maxPoints) + '\n\n' + footer + '\n\n';
     const appendixMD = await getAppendix(dataDir);
 
     const title = `${tenant.title} – Mock Exam`;
@@ -142,7 +164,11 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
 
     const markdown = headerMD + exerciseMarkdowns.join('\n') + '\n' + footerMD + '\n' + appendixMD;
 
-    return NextResponse.json({ title, css, body, markdown, maxPoints, selected }, { status: 200 });
+    return NextResponse.json({ 
+      title, 
+      css, 
+      body, 
+    }, { status: 200 });
   } catch (err) {
     console.error('❌ Error in /api/generate:', err);
     return NextResponse.json({ error: (err as Error).message ?? 'Unknown error' }, { status: 500 });
