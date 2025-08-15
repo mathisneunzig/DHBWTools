@@ -1,4 +1,4 @@
-export type TenantId = 'db' | 'se2' | 'fs';
+export type TenantId = 'db' | 'se2' | 'se2-ka' | 'fs';
 
 export type TenantCfg = {
   id: TenantId;
