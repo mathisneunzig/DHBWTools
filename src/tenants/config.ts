@@ -10,21 +10,27 @@ export type TenantCfg = {
 export const TENANTS: TenantCfg[] = [
   {
     id: 'db',
-    domains: ['db.mathisneunzig.de', 'db.localhost:3000', 'db.localhost'],
+    domains: ['db.mathis-neunzig.de', 'db.localhost:3000', 'db.localhost'],
     title: 'Database Systems',
     dataDir: 'public/data/db',
   },
   {
     id: 'se2',
-    domains: ['se2.mathisneunzig.de', 'se2.localhost:3000', 'se2.localhost'],
+    domains: ['se2.mathis-neunzig.de', 'se2.localhost:3000', 'se2.localhost'],
     title: 'Software Engineering II',
-    dataDir: 'public/data/se',
+    dataDir: 'public/data/se2',
+  },
+  {
+    id: 'se2-ka',
+    domains: ['se2-ka.mathis-neunzig.de', 'se2-ka.localhost:3000', 'se2-ka.localhost'],
+    title: 'Software Engineering II',
+    dataDir: 'public/data/se2-ka',
   },
   {
     id: 'fs',
-    domains: ['fs.mathisneunzig.de', 'fs.localhost:3000', 'fs.localhost'],
+    domains: ['fs.mathis-neunzig.de', 'fs.localhost:3000', 'fs.localhost'],
     title: 'Fortgeschrittene Systementwicklung',
-    dataDir: 'public/data/stats',
+    dataDir: 'public/data/fs',
   },
 ];
 
