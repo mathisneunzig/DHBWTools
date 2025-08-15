@@ -1,0 +1,2 @@
+## Software Engineering {name:" Geschichte von SE"}
+<p>Nennen Sie ein historisches Beispiel für ein Softwareversagen und erläutern Sie kurz die daraus gezogenen Konsequenzen für die Disziplin des Software Engineering.</p>
