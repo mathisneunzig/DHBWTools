@@ -15,3 +15,12 @@
 
 ## HTTP Codes {name:"HTTP Codes"}
 <p>Beschreiben Sie in Kürze, was die HTTP-Methode <b>PATCH</b> macht.</p>
+
+## HTTP Codes {name:"HTTP Codes"}
+<p>Beschreiben Sie in Kürze, was der Inhalt vom HTTP-Header <b>Content-Type</b> aussagt.</p>
+
+## HTTP Codes {name:"HTTP Codes"}
+<p>Beschreiben Sie in Kürze, was der Inhalt vom HTTP-Header <b>Accept</b> aussagt.</p>
+
+## HTTP Codes {name:"HTTP Codes"}
+<p>Beschreiben Sie in Kürze, was der Inhalt vom HTTP-Header <b>Allow</b> aussagt.</p>
