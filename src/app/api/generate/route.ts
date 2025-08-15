@@ -19,17 +19,18 @@ function addAppendix(str: string) {
 }
 
 async function getAppendix(dataDir: string) {
+  const folderName = path.basename(dataDir);
   if (appendix.length === 0) return '';
-  let string = '# Appendix \n\n ';
+  let string = `# ${folderName == 'db' ? "Appendix" : "Anhang"} \n\n `;
   for (let i = 0; i < appendix.length; i++) {
     const e = appendix[i];
     const filepath = path.join(dataDir, 'appendix', `${e}.md`);
     if (await fileExists(filepath)) {
       const a = await fs.readFile(filepath, 'utf8');
       string += `## ${e} \n\n ${a} \n\n`;
-      if (i < appendix.length - 1) {
-        string += '<div style="page-break-after: always;"></div> \n\n';
-      }
+      // if (i < appendix.length - 1) {
+      //   string += '<div style="page-break-after: always;"></div> \n\n';
+      // }
     } else {
       console.error('❌ File does not exist:', filepath);
     }
@@ -38,14 +39,15 @@ async function getAppendix(dataDir: string) {
 }
 
 async function getExercises(exercises: Exercise[], dataDir: string): Promise<string[]> {
+  const folderName = path.basename(dataDir);
   const blocks: string[] = [];
   for (const [index, e] of exercises.entries()) {
-    let exercise = `## ${index + 1}.) ${e.title} (${e.points} points)`;
+    let exercise = `## ${index + 1}.) ${e.title} (${e.points} ${folderName == 'db' ? "points" : "Punkte"})`;
     maxPoints += e.points;
 
     if (e.appendix) {
       const name = e.appendix.split(".")[0];
-      exercise += `\n\n <small>For this exercise, please have a look at appendix "${name}"</small> `;
+      exercise += `\n\n <small>${folderName == 'db' ? "For this exercise, please have a look at appendix" : "Zu dieser Aufgabe gehört Anhang"} "${name}"</small> `;
       addAppendix(name);
     }
 
