@@ -1,3 +1,5 @@
+export const runtime = 'nodejs';
+
 import { NextResponse } from 'next/server';
 import { getTopicsAndDifficulties } from '@/lib/exercises';
 import { getTenantDataDirAbs } from '@/lib/tenant';
