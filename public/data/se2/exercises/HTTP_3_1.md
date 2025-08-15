@@ -1,5 +1,5 @@
 ## HTTP Code {name:"HTTP Code"}
-<p>Wie lautete der vollständige Name von HTTP-Code <b>103</b>?</p>+
+<p>Wie lautete der vollständige Name von HTTP-Code <b>103</b>?</p>
 
 ## HTTP Code {name:"HTTP Code"}
 <p>Wie lautete der vollständige Name von HTTP-Code <b>422</b>?</p>
