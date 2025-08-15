@@ -1,0 +1,1 @@
+Resource for exercise 1.
