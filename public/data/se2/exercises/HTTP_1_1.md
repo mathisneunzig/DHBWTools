@@ -74,3 +74,43 @@ Welcher HTTP-Code sagt nur aus, dass der Server auf eine unerwartete Bedingung g
 - [ ] 503
 - [ ] 409
 - [ ] 100
+
+## Multiple-Choice-Aufgabe {name:"Multiple-Choice-Aufgabe HTTP-Methoden"}
+Welche HTTP-Methode fordert eine Repräsentation der angegebenen Ressource an?
+- [ ] HEAD
+- [ ] PATCH
+- [ ] GET
+- [ ] PUT
+- [ ] CONNECT
+
+## Multiple-Choice-Aufgabe {name:"Multiple-Choice-Aufgabe HTTP-Methoden"}
+Welche HTTP-Methode sendet Daten an den Server, wobei es zu Nebeneffekten bei Mehrfachausführung kommen kann?
+- [ ] HEAD
+- [ ] PATCH
+- [ ] PUT
+- [ ] POST
+- [ ] SAVE
+
+## Multiple-Choice-Aufgabe {name:"Multiple-Choice-Aufgabe HTTP-Methoden"}
+Welche HTTP-Methode sendet Daten an den Server, wobei es zu keinen Nebeneffekten bei Mehrfachausführungen kommen kann?
+- [ ] HEAD
+- [ ] PATCH
+- [ ] PUT
+- [ ] POST
+- [ ] SAVE
+
+## Multiple-Choice-Aufgabe {name:"Multiple-Choice-Aufgabe HTTP-Methoden"}
+Welche HTTP-Methode sendet Daten an den Server, womit die bereits bestehende Ressource vollständig ersetzt wird?
+- [ ] HEAD
+- [ ] PATCH
+- [ ] PUT
+- [ ] POST
+- [ ] SAVE
+
+## Multiple-Choice-Aufgabe {name:"Multiple-Choice-Aufgabe HTTP-Methoden"}
+Welche HTTP-Methode fordert den Server auf, eine spezifizierte Ressource zu löschen?
+- [ ] DROP
+- [ ] OPTIONS
+- [ ] DELETE
+- [ ] REMOVE
+- [ ] HEAD

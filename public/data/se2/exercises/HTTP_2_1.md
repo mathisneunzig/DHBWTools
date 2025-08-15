@@ -52,3 +52,11 @@ Welcher HTTP-Code zeigt einen Anfragekonflikt mit dem aktuellen Zustand der Ziel
 - [ ] 404
 - [ ] 406
 - [ ] 409
+
+## Multiple-Choice-Aufgabe {name:"Multiple-Choice-Aufgabe HTTP-Methoden"}
+Welche HTTP-Methode sendet Daten an den Server, womit die bereits bestehende Ressource nicht vollständig ersetzt wird, sondern einzelne Elemente aktualisiert werden?
+- [ ] HEAD
+- [ ] PATCH
+- [ ] PUT
+- [ ] POST
+- [ ] SAVE

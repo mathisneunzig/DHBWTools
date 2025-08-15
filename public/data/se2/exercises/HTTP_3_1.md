@@ -30,3 +30,35 @@ Welcher HTTP-Code sagt aus, dass der Server die für die Erfüllung der Anfrage 
 - [ ] 504
 - [ ] 502
 - [ ] 503
+
+## Multiple-Choice-Aufgabe {name:"Multiple-Choice-Aufgabe HTTP-Methoden"}
+Welche HTTP-Methode fordert die Metadaten einer Ressource in Form von Headers an, die der Server gesendet hätte, wenn stattdessen die GET-Methode verwendet worden wäre?
+- [ ] HEAD
+- [ ] METADATA
+- [ ] OPTIONS
+- [ ] TRACE
+- [ ] GET
+
+## Multiple-Choice-Aufgabe {name:"Multiple-Choice-Aufgabe HTTP-Methoden"}
+Welche HTTP-Methode führt einen Nachrichtenrückschlaufe-Test entlang des Pfades zur Zielressource aus?
+- [ ] HEAD
+- [ ] METADATA
+- [ ] OPTIONS
+- [ ] TRACE
+- [ ] GET
+
+## Multiple-Choice-Aufgabe {name:"Multiple-Choice-Aufgabe HTTP-Methoden"}
+Welche HTTP-Methode fordert zulässige Kommunikationsoptionen für eine bestimmte URL oder einen Server an?
+- [ ] HEAD
+- [ ] METADATA
+- [ ] OPTIONS
+- [ ] TRACE
+- [ ] GET
+
+## Multiple-Choice-Aufgabe {name:"Multiple-Choice-Aufgabe HTTP-Methoden"}
+Welche HTTP-Methode fordert, dass ein Proxy einen HTTP-Tunnel zu einem Zielserver einrichtet und im Erfolgsfall blind Daten in beide Richtungen weiterleitet, bis der Tunnel geschlossen wird?
+- [ ] HEAD
+- [ ] CONNECT
+- [ ] OPTIONS
+- [ ] TRACE
+- [ ] OPEN

@@ -18,3 +18,15 @@
 
 ## HTTP Codes {name:"HTTP Codes"}
 <p>Beschreiben Sie in Kürze die Bedeutung von HTTP-Code <b>500</b>.</p>
+
+## HTTP Codes {name:"HTTP Codes"}
+<p>Beschreiben Sie in Kürze, was die HTTP-Methode <b>GET</b> macht.</p>
+
+## HTTP Codes {name:"HTTP Codes"}
+<p>Beschreiben Sie in Kürze, was die HTTP-Methode <b>POST</b> macht.</p>
+
+## HTTP Codes {name:"HTTP Codes"}
+<p>Beschreiben Sie in Kürze, was die HTTP-Methode <b>PUT</b> macht.</p>
+
+## HTTP Codes {name:"HTTP Codes"}
+<p>Beschreiben Sie in Kürze, was die HTTP-Methode <b>DELETE</b> macht.</p>

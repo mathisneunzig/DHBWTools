@@ -12,3 +12,6 @@
 
 ## HTTP Codes {name:"HTTP Codes"}
 <p>Beschreiben Sie in Kürze die Bedeutung von HTTP-Code <b>409</b>.</p>
+
+## HTTP Codes {name:"HTTP Codes"}
+<p>Beschreiben Sie in Kürze, was die HTTP-Methode <b>PATCH</b> macht.</p>
