@@ -32,6 +32,7 @@ async function getAppendix(dataDir: string) {
       console.error('❌ File does not exist:', filepath);
     }
   }
+  string += `<div style="page-break-after: always;"></div>`;
   return string;
 }
 
@@ -158,7 +159,6 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
       ${exerciseHtmlBlocks}
       <div style="page-break-after: always;"></div>
       <div class="exercise">${marked(footerMD)}</div>
-      <div style="page-break-after: always;"></div>
       ${marked(appendixMD)}
     `;
 
