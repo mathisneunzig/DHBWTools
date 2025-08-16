@@ -66,3 +66,6 @@
 
 ## Code Smells {name:"Code Smells"}
 <p>Was sagt der Code Smell <b>Middle Man</b> aus?</p>
+
+## Code Smells {name:"Code Smells"}
+<p>Was sagt der Code Smell <b>Incomplete Library Class</b> aus?</p>
