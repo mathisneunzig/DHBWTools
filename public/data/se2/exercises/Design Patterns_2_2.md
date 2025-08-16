@@ -49,3 +49,6 @@ b) Zu welcher Kategorie von Patterns gehört das <b>Singleton</b> Pattern?
 - [ ] Creational Pattern
 - [ ] Messaging Pattern
 - [ ] Structural Pattern
+
+## GoF {name:"GoF"}
+<p>Erläutern Sie kurz, was die Gang of Four ist.</p>
