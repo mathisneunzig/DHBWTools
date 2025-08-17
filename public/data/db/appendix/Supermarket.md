@@ -1,5 +1,7 @@
 <div style="page-break-after: always;"></div>
 
+## Supermarket
+
 ### brand
 
 |   id | name                                       | legal_form   | country   | city              | address             |   zip_code |

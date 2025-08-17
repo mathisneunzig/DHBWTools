@@ -6,10 +6,8 @@ import path from 'path';
 import { loadExercises, Exercise } from '@/lib/exercises';
 import { getResult, fileExists } from './utils';
 import { getTenantOrThrow, getTenantDataDirAbs } from '@/lib/tenant';
-
-function shuffle<T>(arr: T[]): T[] {
-  return arr.sort(() => Math.random() - 0.5);
-}
+import { getStrategy } from '@/lib/strategies';
+import { shuffle } from '@/lib/utils';
 
 let appendix: string[] = [];
 let maxPoints = 0;
@@ -27,7 +25,7 @@ async function getAppendix(dataDir: string) {
     const filepath = path.join(dataDir, 'appendix', `${e}.md`);
     if (await fileExists(filepath)) {
       const a = await fs.readFile(filepath, 'utf8');
-      string += `## ${e} \n\n ${a} \n\n`;
+      string += `${a} \n\n`;
     } else {
       console.error('❌ File does not exist:', filepath);
     }
@@ -81,12 +79,12 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
     const dataDir = await getTenantDataDirAbs();
 
     const data = await req.json();
-    const { topics, difficulties, points: totalPoints } = data;
+    const { topics, difficulties, points: totalPoints, strategy } = data;
 
-    const all = await loadExercises(dataDir);
-    const pool = all.filter(
+    const all = await loadExercises(dataDir)
+    const exercises = all.filter(
       (e) => topics.includes(e.topic) && difficulties.includes(e.difficulty)
-    );
+    )
 
     const header = await fs.readFile(path.join(dataDir, 'header.md'), 'utf8');
     const footer = await fs.readFile(path.join(dataDir, 'footer.md'), 'utf8');
@@ -94,61 +92,21 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
     const resultrow = await fs.readFile(path.join(dataDir, 'resultrow.md'), 'utf8');
     const css = await fs.readFile(path.join(process.cwd(), 'src/styles/pdf-style.css'), 'utf8');
 
-    const byTopic: Record<string, Exercise[]> = {};
-    for (const t of topics) byTopic[t] = [];
-    for (const ex of pool) byTopic[ex.topic]?.push(ex);
-    for (const t of topics) byTopic[t] = shuffle(byTopic[t]);
-
-    const order = shuffle([...topics]);
-    const indices: Record<string, number> = Object.fromEntries(order.map(t => [t, 0]));
-    const selected: Exercise[] = [];
-    let sumPoints = 0;
-
-    let active = order.filter(t => byTopic[t].length > 0).length;
-    const maxLoops = 10000;
-    let loops = 0;
-
-    while (sumPoints < totalPoints && active > 0 && loops < maxLoops) {
-      for (const t of order) {
-        if (sumPoints >= totalPoints) break;
-        const list = byTopic[t];
-        let i = indices[t] ?? 0;
-        if (!list || i >= list.length) continue;
-
-        let picked: Exercise | null = null;
-        while (i < list.length) {
-          const cand = list[i];
-          if (sumPoints + cand.points <= totalPoints && !selected.includes(cand)) {
-            picked = cand;
-            i += 1;
-            break;
-          }
-          i += 1;
-        }
-        indices[t] = i;
-
-        if (picked) {
-          selected.push(picked);
-          sumPoints += picked.points;
-        }
-
-        if (i >= list.length) {
-          active = order.filter(x => indices[x] < byTopic[x].length).length;
-        }
-      }
-      loops += 1;
-      if (order.every(t => indices[t] >= (byTopic[t]?.length ?? 0))) break;
-    }
-
-    const shuffledSelected = shuffle([...selected]);
-    const exerciseMarkdowns = await getExercises(shuffledSelected, dataDir);
+    const strategyImpl = getStrategy(strategy);
+    const selected: Exercise[] = shuffle(strategyImpl.select(
+      exercises,
+      totalPoints,
+      topics,
+      difficulties
+    ));
+    const exerciseMarkdowns = await getExercises(selected, dataDir);
     const { marked } = await import('marked');
     const exerciseHtmlBlocks = exerciseMarkdowns
       .map((md) => `<div class="exercise">${marked(md)}</div>`)
       .join('\n');
 
     const headerMD = header.replace('{points}', '' + maxPoints) + '\n\n';
-    const footerMD = result + '\n' + getResult(shuffledSelected, resultrow, maxPoints) + '\n\n' + footer + '\n\n';
+    const footerMD = result + '\n' + getResult(selected, resultrow, maxPoints) + '\n\n' + footer + '\n\n';
     const appendixMD = await getAppendix(dataDir);
 
     const title = `${tenant.title} – Mock Exam`;
@@ -160,8 +118,6 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
       <div class="exercise">${marked(footerMD)}</div>
       ${marked(appendixMD)}
     `;
-
-    const markdown = headerMD + exerciseMarkdowns.join('\n') + '\n' + footerMD + '\n' + appendixMD;
 
     return NextResponse.json({ 
       title, 

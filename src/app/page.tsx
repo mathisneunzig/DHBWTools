@@ -19,8 +19,23 @@ export default function Page() {
   const [selectedTopics, setSelectedTopics] = useState<string[]>([])
   const [difficulties, setDifficulties] = useState<number[]>([])
   const [points, setPoints] = useState(20)
+  const [strategy, setStrategies] = useState('random')
   const [color, setColor] = useState('lightblue')
   const [secColor, setSecColor] = useState('blue')
+
+  const strategies = [{
+    id: "random",
+    name: "Random exercises"
+  },{
+    id: "difficulty",
+    name: "Every difficulty is represented equally"
+  },{
+    id: "topic",
+    name: "Every topic is represented equally"
+  },{
+    id: "points",
+    name: "50% low point exercises, 50% higher point exercises"
+  }];
 
   useEffect(() => {
     async function load(): Promise<void> {
@@ -61,7 +76,7 @@ export default function Page() {
         topics: selectedTopics,
         difficulties,
         points,
-        exam: false,
+        strategy
       }),
     })
   
@@ -263,6 +278,55 @@ export default function Page() {
           },
         }}
       />
+      <FormControl fullWidth>
+        <InputLabel
+          id="strategy-label"
+          sx={{
+            color: color,
+            "&.Mui-focused": {
+              color: secColor,
+            },
+          }}
+        >
+          Strategy
+        </InputLabel>
+        <Select
+          labelId="strategy-label"
+          value={strategy}
+          label="Strategy"
+          onChange={(e) => setStrategies(e.target.value as string)}
+          sx={{
+            color: "white",
+            backgroundColor: "#333",
+            "& .MuiSvgIcon-root": {
+              color: color,
+            },
+            "& .MuiOutlinedInput-notchedOutline": {
+              borderColor: color,
+            },
+            "&:hover .MuiOutlinedInput-notchedOutline": {
+              borderColor: "lightgray",
+            },
+            "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
+              borderColor: secColor,
+            },
+          }}
+          MenuProps={{
+            PaperProps: {
+              sx: {
+                backgroundColor: color, 
+                color: "black",         
+              },
+            },
+          }}
+        >
+          {strategies.map((s) => (
+            <MenuItem key={s.id} value={s.id}>
+              {s.name}
+            </MenuItem>
+          ))}
+        </Select>
+      </FormControl>
       <br></br>
       <Button variant="contained" onClick={generate}>
         Generate
