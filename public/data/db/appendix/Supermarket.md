@@ -1,3 +1,5 @@
+<div style="page-break-after: always;"></div>
+
 ### brand
 
 |   id | name                                       | legal_form   | country   | city              | address             |   zip_code |
@@ -40,5 +42,3 @@
 
 | id   | name       |
 |:-----|:-----------|
-
-<div style="page-break-after: always;"></div>

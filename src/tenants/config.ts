@@ -5,6 +5,8 @@ export type TenantCfg = {
   domains: string[];
   title: string;
   dataDir: string;
+  color: string;
+  secColor: string;
 };
 
 export const TENANTS: Record<TenantId, TenantCfg> = {
@@ -13,24 +15,32 @@ export const TENANTS: Record<TenantId, TenantCfg> = {
     domains: ['db.mathis-neunzig.de', 'db.localhost:3000', 'db.localhost'],
     title: 'Database Systems',
     dataDir: 'public/data/db',
+    color: 'darkgreen',
+    secColor: 'green'
   },
   se2: {
     id: 'se2',
     domains: ['se2.mathis-neunzig.de', 'se2.localhost:3000', 'se2.localhost'],
     title: 'Software Engineering II',
     dataDir: 'public/data/se2',
+    color: 'darkblue',
+    secColor: 'blue'
   },
   'se2-ka': {
     id: 'se2-ka',
     domains: ['se2-ka.mathis-neunzig.de', 'se2-ka.localhost:3000', 'se2-ka.localhost'],
     title: 'Software Engineering II',
     dataDir: 'public/data/se2-ka',
+    color: 'darkgreen',
+    secColor: 'green'
   },
   fs: {
     id: 'fs',
     domains: ['fs.mathis-neunzig.de', 'fs.localhost:3000', 'fs.localhost'],
     title: 'Fortgeschrittene Systementwicklung',
     dataDir: 'public/data/fs',
+    color: 'darkgreen',
+    secColor: 'green'
   },
 };
 

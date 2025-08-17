@@ -21,7 +21,7 @@ function addAppendix(str: string) {
 async function getAppendix(dataDir: string) {
   const folderName = path.basename(dataDir);
   if (appendix.length === 0) return '';
-  let string = `# ${folderName == 'db' ? "Appendix" : "Anhang"} \n\n `;
+  let string = `<div style="page-break-after: always;"></div> \n\n # ${folderName == 'db' ? "Appendix" : "Anhang"} \n\n `;
   for (let i = 0; i < appendix.length; i++) {
     const e = appendix[i];
     const filepath = path.join(dataDir, 'appendix', `${e}.md`);
@@ -32,7 +32,6 @@ async function getAppendix(dataDir: string) {
       console.error('❌ File does not exist:', filepath);
     }
   }
-  string += `<div style="page-break-after: always;"></div>`;
   return string;
 }
 

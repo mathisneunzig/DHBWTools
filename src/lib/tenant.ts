@@ -21,3 +21,13 @@ export async function getTenantDataDirAbs(): Promise<string> {
   const tenant = await getTenantOrThrow();
   return path.join(process.cwd(), tenant.dataDir);
 }
+
+export async function getTenantPrimColor(): Promise<string> {
+  const tenant = await getTenantOrThrow();
+  return tenant.color;
+}
+
+export async function getTenantSecColor(): Promise<string> {
+  const tenant = await getTenantOrThrow();
+  return tenant.secColor;
+}
