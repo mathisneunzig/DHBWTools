@@ -8,6 +8,14 @@ class SystemManager {
   renderUI(){ document.body.innerHTML = JSON.stringify(this.users); }
 }
 ```
+- [ ] Single-Responsibility_Prinzip
+- [ ] Open-Closed-Prinzip
+- [ ] Namenskonventionen
+- [ ] Liskovsche Substitutionsprinzip
+- [ ] Information Hiding
+- [ ] Interface-Segregation-Prinzip
+- [ ] Law of Demeter
+- [ ] Dependency-Inversion-Prinzip
 
 ## Codequalität {name:"Codequalität"}
 Nennen Sie, gegen welche Coderegeln im Folgenden verstoßen wird. Beschreiben Sie danach auch, wie dieser Verstoß aufgehoben werden kann.
@@ -20,6 +28,14 @@ function priceFor(type, base) {
   }
 }
 ```
+- [ ] Single-Responsibility_Prinzip
+- [ ] Open-Closed-Prinzip
+- [ ] Namenskonventionen
+- [ ] Liskovsche Substitutionsprinzip
+- [ ] Information Hiding
+- [ ] Interface-Segregation-Prinzip
+- [ ] Law of Demeter
+- [ ] Dependency-Inversion-Prinzip
 
 ## Codequalität {name:"Codequalität"}
 Nennen Sie, gegen welche Coderegeln im Folgenden verstoßen wird. Beschreiben Sie danach auch, wie dieser Verstoß aufgehoben werden kann.
@@ -33,6 +49,14 @@ class Penguin extends Bird {
     fly(){ throw new Error("Penguins don't fly"); } 
 }
 ```
+- [ ] Single-Responsibility_Prinzip
+- [ ] Open-Closed-Prinzip
+- [ ] Namenskonventionen
+- [ ] Liskovsche Substitutionsprinzip
+- [ ] Information Hiding
+- [ ] Interface-Segregation-Prinzip
+- [ ] Law of Demeter
+- [ ] Dependency-Inversion-Prinzip
 
 ## Codequalität {name:"Codequalität"}
 Nennen Sie, gegen welche Coderegeln im Folgenden verstoßen wird. Beschreiben Sie danach auch, wie dieser Verstoß aufgehoben werden kann.
@@ -58,6 +82,14 @@ class USER_Service_ALLINONE {
 const S = new USER_Service_ALLINONE();
 S.createUSER({ name: "Alice", age: 21 });
 ```
+- [ ] Single-Responsibility_Prinzip
+- [ ] Open-Closed-Prinzip
+- [ ] Namenskonventionen
+- [ ] Liskovsche Substitutionsprinzip
+- [ ] Information Hiding
+- [ ] Interface-Segregation-Prinzip
+- [ ] Law of Demeter
+- [ ] Dependency-Inversion-Prinzip
 
 ## Codequalität {name:"Codequalität"}
 Nennen Sie, gegen welche Coderegeln im Folgenden verstoßen wird. Beschreiben Sie danach auch, wie dieser Verstoß aufgehoben werden kann.
@@ -71,6 +103,14 @@ function CALC_price_BY_TYPE(tp, base) {
 }
 const P1 = CALC_price_BY_TYPE("vip", 100);
 ```
+- [ ] Single-Responsibility_Prinzip
+- [ ] Open-Closed-Prinzip
+- [ ] Namenskonventionen
+- [ ] Liskovsche Substitutionsprinzip
+- [ ] Information Hiding
+- [ ] Interface-Segregation-Prinzip
+- [ ] Law of Demeter
+- [ ] Dependency-Inversion-Prinzip
 
 ## Codequalität {name:"Codequalität"}
 Nennen Sie, gegen welche Coderegeln im Folgenden verstoßen wird. Beschreiben Sie danach auch, wie dieser Verstoß aufgehoben werden kann.
@@ -90,6 +130,14 @@ class WeirdCounter extends BaseCounter {
 const C0 = new BaseCounter().inc(5);
 try { new WeirdCounter().inc(5); } catch(e) {}
 ```
+- [ ] Single-Responsibility_Prinzip
+- [ ] Open-Closed-Prinzip
+- [ ] Namenskonventionen
+- [ ] Liskovsche Substitutionsprinzip
+- [ ] Information Hiding
+- [ ] Interface-Segregation-Prinzip
+- [ ] Law of Demeter
+- [ ] Dependency-Inversion-Prinzip
 
 ## Codequalität {name:"Codequalität"}
 Nennen Sie, gegen welche Coderegeln im Folgenden verstoßen wird. Beschreiben Sie danach auch, wie dieser Verstoß aufgehoben werden kann.
@@ -119,6 +167,14 @@ function useFat(x) {
 const it = new ImgThing();
 useFat(it);
 ```
+- [ ] Single-Responsibility_Prinzip
+- [ ] Open-Closed-Prinzip
+- [ ] Namenskonventionen
+- [ ] Liskovsche Substitutionsprinzip
+- [ ] Information Hiding
+- [ ] Interface-Segregation-Prinzip
+- [ ] Law of Demeter
+- [ ] Dependency-Inversion-Prinzip
 
 ## Codequalität {name:"Codequalität"}
 Nennen Sie, gegen welche Coderegeln im Folgenden verstoßen wird. Beschreiben Sie danach auch, wie dieser Verstoß aufgehoben werden kann.
@@ -150,6 +206,14 @@ class USER_A {
 const u1 = new USER_A(new AccountZ(new CardY(new ChipX("abc123"))));
 const serialUPPER = u1.getAccount().getCard().getChip().readSerial().toUpperCase();
 ```
+- [ ] Single-Responsibility_Prinzip
+- [ ] Open-Closed-Prinzip
+- [ ] Namenskonventionen
+- [ ] Liskovsche Substitutionsprinzip
+- [ ] Information Hiding
+- [ ] Interface-Segregation-Prinzip
+- [ ] Law of Demeter
+- [ ] Dependency-Inversion-Prinzip
 
 ## Codequalität {name:"Codequalität"}
 Nennen Sie, gegen welche Coderegeln im Folgenden verstoßen wird. Beschreiben Sie danach auch, wie dieser Verstoß aufgehoben werden kann.
@@ -166,6 +230,14 @@ const BA = new bank_account();
 BA.balance = -999;
 BA.history.push("hack");
 ```
+- [ ] Single-Responsibility_Prinzip
+- [ ] Open-Closed-Prinzip
+- [ ] Namenskonventionen
+- [ ] Liskovsche Substitutionsprinzip
+- [ ] Information Hiding
+- [ ] Interface-Segregation-Prinzip
+- [ ] Law of Demeter
+- [ ] Dependency-Inversion-Prinzip
 
 ## Codequalität {name:"Codequalität"}
 Nennen Sie, gegen welche Coderegeln im Folgenden verstoßen wird. Beschreiben Sie danach auch, wie dieser Verstoß aufgehoben werden kann.
@@ -194,6 +266,14 @@ class payMENT_SERVICE_MAIN {
 const S1_MAIN = new payMENT_SERVICE_MAIN();
 S1_MAIN.RUN_pay("Alice", "vip", 120);
 ```
+- [ ] Single-Responsibility_Prinzip
+- [ ] Open-Closed-Prinzip
+- [ ] Namenskonventionen
+- [ ] Liskovsche Substitutionsprinzip
+- [ ] Information Hiding
+- [ ] Interface-Segregation-Prinzip
+- [ ] Law of Demeter
+- [ ] Dependency-Inversion-Prinzip
 
 ## Codequalität {name:"Codequalität"}
 Nennen Sie, gegen welche Coderegeln im Folgenden verstoßen wird. Beschreiben Sie danach auch, wie dieser Verstoß aufgehoben werden kann.
@@ -227,6 +307,14 @@ const LISTx = [
 APPx.RENDER_SHAPE(LISTx[0]);
 APPx.EXPORT(LISTx, "csv");
 ```
+- [ ] Single-Responsibility_Prinzip
+- [ ] Open-Closed-Prinzip
+- [ ] Namenskonventionen
+- [ ] Liskovsche Substitutionsprinzip
+- [ ] Information Hiding
+- [ ] Interface-Segregation-Prinzip
+- [ ] Law of Demeter
+- [ ] Dependency-Inversion-Prinzip
 
 ## Codequalität {name:"Codequalität"}
 Nennen Sie, gegen welche Coderegeln im Folgenden verstoßen wird. Beschreiben Sie danach auch, wie dieser Verstoß aufgehoben werden kann.
@@ -257,3 +345,11 @@ class NOTIFY_SYSTEM {
 const notification_system = new NOTIFY_SYSTEM();
 notification_system.broadCast([{ to: "ops@x", msg: "up" }, { to: "+49123", msg: "ok" }], "sms");
 ```
+- [ ] Single-Responsibility_Prinzip
+- [ ] Open-Closed-Prinzip
+- [ ] Namenskonventionen
+- [ ] Liskovsche Substitutionsprinzip
+- [ ] Information Hiding
+- [ ] Interface-Segregation-Prinzip
+- [ ] Law of Demeter
+- [ ] Dependency-Inversion-Prinzip

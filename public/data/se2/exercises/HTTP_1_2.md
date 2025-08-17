@@ -30,3 +30,9 @@
 
 ## HTTP Codes {name:"HTTP Codes"}
 <p>Beschreiben Sie in Kürze, was die HTTP-Methode <b>DELETE</b> macht.</p>
+
+## GraphQL {name:"GraphQL"}
+<p>Beschreiben Sie in Kürze, wofür eine <b>Query</b> in GraphQL genutzt wird.</p>
+
+## GraphQL {name:"GraphQL"}
+<p>Beschreiben Sie in Kürze, wofür eine <b>Mutation</b> in GraphQL genutzt wird.</p>

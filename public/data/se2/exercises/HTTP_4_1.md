@@ -63,3 +63,17 @@ Welcher HTTP-Code sagt aus, dass der Server, während er als Gateway oder Proxy 
 - [ ] 504
 - [ ] 502
 - [ ] 500
+
+## Multiple-Choice-Aufgabe {name:"Multiple-Choice-Aufgabe SOAP"}
+Was trifft typischerweise auf SOAP-basierten Nachrichtenaustausch zu?
+- [ ] Strikte Struktur mit Envelope/Header/Body
+- [ ] JSON ist das Standardformat
+- [ ] WSDL beschreibt die verfügbaren Operationen
+- [ ] SOAP erfordert zwingend HTTP/2
+
+## Multiple-Choice-Aufgabe {name:"Multiple-Choice-Aufgabe SOAP"}
+Was trifft typischerweise auf SOAP-basierten Nachrichtenaustausch zu?
+- [ ] Strikte Struktur mit Envelope/Header/Body
+- [ ] WSDL beschreibt die verfügbaren Operationen
+- [ ] SOAP erfordert zwingend HTTP/2
+- [ ] XML ist das Standardformat

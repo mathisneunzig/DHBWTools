@@ -24,3 +24,24 @@
 
 ## HTTP Codes {name:"HTTP Codes"}
 <p>Beschreiben Sie in Kürze, was der Inhalt vom HTTP-Header <b>Allow</b> aussagt.</p>
+
+## GraphQL {name:"GraphQL"}
+Analysieren und erläutern Sie die folgende GraphQL-Query:
+``` json
+query GetPet($id: ID!) {
+  pets(id: $id) {
+    id
+    name
+  }
+}
+```
+
+## GraphQL {name:"GraphQL"}
+Analysieren und erläutern Sie die folgende GraphQL-Query:
+``` json
+query GetPet($id: ID!) {
+  pets(id: $id) {
+    name
+  }
+}
+```
