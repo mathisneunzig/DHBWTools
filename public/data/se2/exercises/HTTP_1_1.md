@@ -114,3 +114,10 @@ Welche HTTP-Methode fordert den Server auf, eine spezifizierte Ressource zu lös
 - [ ] DELETE
 - [ ] REMOVE
 - [ ] HEAD
+
+## Multiple-Choice-Aufgabe {name:"Multiple-Choice-Aufgabe GraphQL"}
+Welche Aussage zu GraphQL ist korrekt?
+- [ ] GraphQL erzwingt serverseitig immer eine 1:1-Entsprechung zwischen Endpunkt und Ressource.
+- [ ] GraphQL erlaubt dem Client, die benötigten Felder granular zu wählen.
+- [ ] GraphQL-Queries müssen immer einen Operation-Name haben.
+- [ ] GraphQL verwendet ausschließlich HTTP-GET.
